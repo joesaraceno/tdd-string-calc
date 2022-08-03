@@ -14,7 +14,7 @@ namespace utility
 
   public class StringCalc
   {
-    private readonly IDisplay _display;
+    private readonly IDisplay? _display;
     public StringCalc(IDisplay display)
     {
       _display = display;

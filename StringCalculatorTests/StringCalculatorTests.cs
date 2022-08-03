@@ -21,50 +21,43 @@ namespace Prime.UnitTests.Services
     [Test]
     public void test_should_return_zero_for_empty_string()
     {
-      var stringCalculator = new StringCalc();
-      Assert.AreEqual(0, stringCalculator.Add(""));
+      Assert.AreEqual(0, _stringCalc.Add(""));
     }
 
     [Test]
     public void test_should_return_value_of_single_number()
     {
-      var stringCalculator = new StringCalc();
-      Assert.AreEqual(1, stringCalculator.Add("1"));
+      Assert.AreEqual(1, _stringCalc.Add("1"));
     }
 
     [Test]
     public void test_should_return_sum_of_multiple_numbers()
     {
-      var stringCalculator = new StringCalc();
-      Assert.AreEqual(3, stringCalculator.Add("1,2"));
+      Assert.AreEqual(3, _stringCalc.Add("1,2"));
     }
 
     [Test]
     public void test_should_return_sum_of_multiple_numbers_with_multiple_delimiters()
     {
-      var stringCalculator = new StringCalc();
-      Assert.AreEqual(6, stringCalculator.Add("1\n2,3"));
+      Assert.AreEqual(6, _stringCalc.Add("1\n2,3"));
     }
 
     [Test]
     public void test_should_return_sum_of_multiple_numbers_with_user_defined_delimiters()
     {
-      var stringCalculator = new StringCalc();
-      Assert.AreEqual(9, stringCalculator.Add("//]\n3]6"));
+      Assert.AreEqual(9, _stringCalc.Add("//]\n3]6"));
     }
 
     [Test]
     public void test_should_throw_exception_with_negative_number()
     {
-      var stringCalculator = new StringCalc();
-      Assert.Throws<ArgumentException>(() => stringCalculator.Add("-1,2"));
+      Assert.Throws<ArgumentException>(() => _stringCalc.Add("-1,2"));
     }
 
     [Test]
     public void test_should_throw_exception_with_negative_number_with_explanation()
     {
-      var stringCalculator = new StringCalc();
-      var e = Assert.Throws<ArgumentException>(() => stringCalculator.Add("-1,2"));
+      var e = Assert.Throws<ArgumentException>(() => _stringCalc.Add("-1,2"));
       Assert.AreEqual("Found invalid number", e?.Message);
     }
 
