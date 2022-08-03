@@ -2,9 +2,9 @@ namespace utility
 {
   public class Display : IDisplay
   {
-    public void Show(IEnumerable<int> values, int sum)
+    public void Show(string toShow)
     {
-      Console.WriteLine($"{String.Join(" + ", values)} = {sum}");
+      Console.WriteLine(toShow);
     }
   }
 }

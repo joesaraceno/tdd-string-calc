@@ -15,7 +15,7 @@ namespace Prime.UnitTests.Services
     [SetUp]
     public void SetUp()
     {
-      _stringCalc = new StringCalc();
+      _stringCalc = new StringCalc(_displayMock.Object);
     }
 
     [Test]
@@ -62,13 +62,12 @@ namespace Prime.UnitTests.Services
     }
 
     [Test]
-    public void test_should_call_display_with_correct_arguments()
+    public void test_should_call_display_correctly()
     {
-      var stringCalculator = new StringCalc(_displayMock.Object);
-      var list = new List<int>() { 1, 2 };
-      stringCalculator.Add("1,2");
-      _displayMock.Verify(f => f.Show(list, 3));
+      _stringCalc.Add("1,2");
+      _displayMock.Verify(f => f.Show("1 + 2 = 3"));
     }
+
   }
 
 }

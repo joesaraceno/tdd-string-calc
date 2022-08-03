@@ -14,17 +14,19 @@ namespace utility
 
   public class StringCalc
   {
-    private readonly IDisplay? _display;
+    private readonly IDisplay _display;
     public StringCalc(IDisplay display)
     {
       _display = display;
     }
 
-    public StringCalc()
+    private readonly char[] Delimiters = { ',', '\n' };
+
+    private string RenderToDisplay(IEnumerable<int> values, int sum)
     {
+      return $"{String.Join(" + ", values)} = {sum}";
     }
 
-    private readonly char[] Delimiters = { ',', '\n' };
     public int Add(string input)
     {
       if (String.IsNullOrEmpty(input))
@@ -52,10 +54,8 @@ namespace utility
         throw new ArgumentException($"Found invalid number");
       }
       var sum = values.Sum();
-      if (_display != null)
-      {
-        _display.Show(values, sum);
-      }
+
+      _display.Show(RenderToDisplay(values, sum));
       return values.Sum();
     }
   }
