@@ -4,5 +4,4 @@ namespace utility
   {
     public void Show(string toShow);
   }
-
 }

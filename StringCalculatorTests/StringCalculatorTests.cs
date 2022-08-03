@@ -67,7 +67,5 @@ namespace Prime.UnitTests.Services
       _stringCalc.Add("1,2");
       _displayMock.Verify(f => f.Show("1 + 2 = 3"));
     }
-
   }
-
 }

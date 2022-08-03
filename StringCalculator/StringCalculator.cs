@@ -11,7 +11,6 @@
 //"", "1", "1,2", "//
 namespace utility
 {
-
   public class StringCalc
   {
     private readonly IDisplay _display;
