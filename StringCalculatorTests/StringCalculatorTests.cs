@@ -1,10 +1,10 @@
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
+
 using utility;
 
-namespace Prime.UnitTests.Services
+namespace StringCalculator.UnitTests.Services
 {
   [TestFixture]
   public class PrimeService_IsPrimeShould
