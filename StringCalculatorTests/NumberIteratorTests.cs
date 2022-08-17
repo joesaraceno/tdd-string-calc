@@ -9,14 +9,14 @@ namespace FizzBuzzTests
   {
     private int _count;
     private NumberIterator _iterator;
-    private Mock<INumberDisplay> _display;
+    private Mock<IDisplay> _display;
     private Mock<IRenderer> _renderer;
 
     [SetUp]
     public void SetUp()
     {
       _count = 0;
-      _display = new Mock<INumberDisplay>();
+      _display = new Mock<IDisplay>();
       _renderer = new Mock<IRenderer>();
     }
 

@@ -1,14 +1,12 @@
-using utility;
-
-namespace FizzBuzzTests
+namespace utility
 {
   public class NumberIterator
   {
     private readonly int _count;
-    private readonly INumberDisplay _display;
+    private readonly IDisplay _display;
     private readonly IRenderer _renderer;
 
-    public NumberIterator(int count, INumberDisplay display, IRenderer renderer)
+    public NumberIterator(int count, IDisplay display, IRenderer renderer)
     {
       _count = count;
       _display = display;

@@ -1,6 +1,6 @@
 namespace utility
 {
-  public class Display : IDisplay
+  public class ConsoleDisplay : IDisplay
   {
     public void Show(string toShow)
     {
