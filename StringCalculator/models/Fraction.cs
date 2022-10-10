@@ -6,10 +6,45 @@ namespace fractions
     private readonly int _numerator;
     private readonly int _denominator;
 
-    public override string ToString() =>
-      _denominator != 1 ?
-        $"{_numerator}/{_denominator}" :
-        $"{_numerator}";
+    public override string ToString()
+    {
+      var result = "";
+      var num = _numerator;
+      var whole_numbers = 0;
+
+      while (num > _denominator)
+      {
+        num -= _denominator;
+        whole_numbers++;
+      }
+
+      if (whole_numbers > 0)
+      {
+        result = $"{whole_numbers} ";
+      }
+
+      result += num;
+
+      if (_denominator != 1)
+      {
+        result = $"{result}/{_denominator}";
+      }
+      else
+      {
+        result = $"{_numerator}";
+      }
+      return result;
+
+    }
+
+    private string Simplify()
+    {
+      var remainder = _numerator % _denominator;
+      var whole = (_numerator / _denominator) + remainder;
+      return remainder.ToString();
+      // return new Fraction(_numerator, _denominator).ToString();
+    }
+
     public Fraction(int numerator, int denominator = 1)
     {
       _gcd = GlobalCommonDenominator(numerator, denominator);
@@ -19,7 +54,20 @@ namespace fractions
 
     public Fraction Add(Fraction other)
     {
-      // just add the numerators
+      return new Fraction((AddNumerators(other)),
+        AddDenominators(other));
+    }
+
+    // if they aren't the same denominator
+    // multiply them straight
+    private int AddDenominators(Fraction other)
+    {
+      return _denominator != other._denominator ?
+        _denominator * other._denominator :
+        _denominator;
+    }
+    private int AddNumerators(Fraction other)
+    {
       var num = _numerator + other._numerator;
       if (_denominator != other._denominator)
       {
@@ -28,14 +76,7 @@ namespace fractions
         num = other._denominator * _numerator;
         num += _denominator * other._numerator;
       }
-      var den = _denominator;
-      if (_denominator != other._denominator)
-      {
-        // if they aren't the same denominator
-        // multiply them straight
-        den = _denominator * other._denominator;
-      }
-      return new Fraction((num), den);
+      return num;
     }
 
     private int GlobalCommonDenominator(int num, int den)
